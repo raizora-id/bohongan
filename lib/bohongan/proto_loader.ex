@@ -90,16 +90,7 @@ defmodule Bohongan.ProtoLoader do
     is_array = modifier == "repeated"
 
     # Convert proto types to JSON types
-    json_type = case type do
-      "string" -> "string"
-      "int32" | "int64" | "uint32" | "uint64" | "sint32" | "sint64" |
-      "fixed32" | "fixed64" | "sfixed32" | "sfixed64" -> "number"
-      "float" | "double" -> "number"
-      "bool" -> "boolean"
-      "bytes" -> "string"
-      _ ->
-        if String.contains?(type, "."), do: "object", else: "object"
-    end
+    json_type = proto_type_to_json_type(type)
 
     %{
       "name" => name,
@@ -110,6 +101,19 @@ defmodule Bohongan.ProtoLoader do
 
   defp parse_field(_) do
     nil
+  end
+
+  # Helper function to convert proto types to JSON types
+  defp proto_type_to_json_type(type) do
+    cond do
+      type == "string" -> "string"
+      type == "bool" -> "boolean"
+      type == "bytes" -> "string"
+      type in ["int32", "int64", "uint32", "uint64", "sint32", "sint64",
+              "fixed32", "fixed64", "sfixed32", "sfixed64", "float", "double"] -> "number"
+      String.contains?(type, ".") -> "object"
+      true -> "object"
+    end
   end
 
   # Convert message definitions to JSON schema
