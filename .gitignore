@@ -1,43 +1,9 @@
-# The directory Mix will write compiled artifacts to.
-/_build/
-
-# If you run "mix test --cover", coverage assets end up here.
-/cover/
-
-# The directory Mix downloads your dependencies sources to.
-/deps/
-
-# Where third-party dependencies like ExDoc output generated docs.
-/doc/
-
-# Ignore .fetch files in case you like to edit your project deps locally.
-/.fetch
-
-# If the VM crashes, it generates a dump, let's ignore it too.
-erl_crash.dump
-
-# Also ignore archive artifacts (built via "mix archive.build").
-*.ez
-
-# Ignore package tarball (built via "mix hex.build").
-bohongan-*.tar
-
-# Temporary files, for example, from tests.
-/tmp/
-
-# Ignore the built escript binary
-/bohongan
-
-# macOS files
+/target
+**/*.rs.bk
+Cargo.lock
 .DS_Store
-
-# Editor files
+.idea/
+.vscode/
 *.swp
 *.swo
-.elixir_ls/
-.vscode/
-.idea/
-
-# Environment variables
 .env
-.env.*
