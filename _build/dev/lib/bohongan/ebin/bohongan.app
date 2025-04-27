@@ -1,0 +1,10 @@
+{application,bohongan,
+             [{modules,['Elixir.Bohongan','Elixir.Bohongan.Application',
+                        'Elixir.Bohongan.Router','Elixir.Bohongan.Store']},
+              {optional_applications,[]},
+              {applications,[kernel,stdlib,elixir,logger,plug_cowboy,jason,
+                             uuid,protobuf,logger_file_backend]},
+              {description,"A zero-config JSON server for mocking REST APIs"},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {mod,{'Elixir.Bohongan.Application',[]}}]}.
